@@ -1,0 +1,10 @@
+<tr id="<%=id=Time.now.to_f.to_s.gsub('.', '')%>">
+	<td colspan="2">
+	<% form_remote_tag(	:url => admin_groups_path, :update=>'groups', :position=>:top, :after=>update_page{|page| page.remove(id)}) do %>
+	<%= error_messages_for :group %>
+		    Name <%= text_field :group, :name %>
+	  	<%= submit_tag "save" %>
+		<%=link_to_function('cancel'){|page| page.remove(id)}%>
+	<% end %>
+	</td>
+</tr>

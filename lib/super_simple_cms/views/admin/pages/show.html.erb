@@ -1,0 +1,32 @@
+<p>
+  <b>Title:</b>
+  <%=h @page.title %>
+</p>
+
+<p>
+  <b>Perma link:</b>
+  <%=h @page.perma_link %><br/>
+</p>
+<p>
+	<b>Full URL:</b>
+	<%= h view_page_url(@page.perma_link) %>
+</p>
+
+<p>
+  <b>Body:</b><br/>
+  <%= @page.html %>
+</p>
+
+<p>
+  <b>Linkable:</b>
+  <%=h @page.linkable %>
+</p>
+
+<p>
+  <b>Group:</b>
+  <%=h @page.group.group_name if @page.group %>
+</p>
+
+
+<%= link_to 'Edit', edit_super_simple_page_path(@page) %> |
+<%= link_to 'Back', super_simple_pages_path %>

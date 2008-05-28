@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/ketsda/!svn/ver/79/app/views/admin/pages
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/ketsda/!svn/ver/70/app/views/admin/pages/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/ketsda/!svn/ver/70/app/views/admin/pages/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/ketsda/!svn/ver/70/app/views/admin/pages/new.html.erb
+END
+_preview.erb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/ketsda/!svn/ver/70/app/views/admin/pages/_preview.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/ketsda/!svn/ver/70/app/views/admin/pages/show.html.erb
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/ketsda/!svn/ver/79/app/views/admin/pages/_form.html.erb
+END

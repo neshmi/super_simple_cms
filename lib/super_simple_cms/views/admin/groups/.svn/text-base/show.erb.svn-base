@@ -1,0 +1,2 @@
+<%= render :partial=>'row', :locals=>{:group=>@group} %>
+<%=javascript_tag(update_page{|page| page.visual_effect(:highlight, @group.identity)})%>

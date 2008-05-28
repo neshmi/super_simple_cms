@@ -1,0 +1,49 @@
+8
+
+dir
+92
+http://svn.averails.com/ketsda/app/views/admin
+http://svn.averails.com/ketsda
+
+
+
+2008-05-07T19:46:05.974425Z
+89
+vincma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+0be0f459-2c43-0410-80ae-95dadfb18beb
+
+groups
+dir
+
+pages
+dir
+
+settings
+dir
+
+users
+dir
+
+events
+dir
+
+dashboard
+dir
+
+attachments
+dir
+

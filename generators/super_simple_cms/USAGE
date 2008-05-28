@@ -1,0 +1,12 @@
+Description:
+    The Super Simple CMS generator creates the migrations for the necessary models used by the plugin.
+
+		You can choose what to name the migration by naming it after calling the generator
+		
+		
+
+Example:
+    ./script/generate super_simple_cms create_super_simple_model
+
+This will create:
+		db/migrate/xxx_create_super_simple_model

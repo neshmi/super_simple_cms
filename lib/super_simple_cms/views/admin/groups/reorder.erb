@@ -1,0 +1,10 @@
+<h1>Ordering Group Links</h1>
+<ul id="groups_reorder"> 
+<% @groups.each do |group| %> 
+	<li id="group_<%= group.id %>"> 
+		<%= group.group_name %>  
+	</li> 
+<% end %> 
+</ul> 
+
+<%= sortable_element 'groups_reorder', :url=>sort_group_super_simple_groups_path, :complete => visual_effect(:highlight, 'groups_reorder') %> 

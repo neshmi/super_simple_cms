@@ -1,0 +1,10 @@
+<h3>Showing links for <%= @group.name %></h3>
+<ul id="group-links"> 
+<% @group.links.each do |link| %> 
+	<li id="link_<%= link.id %>"> 
+		<%= link.title %>  
+	</li> 
+<% end %> 
+</ul> 
+
+<%= sortable_element 'group-links', :url => { :action => "sort", :id => @group }, :complete => visual_effect(:highlight, 'group-links') %> 

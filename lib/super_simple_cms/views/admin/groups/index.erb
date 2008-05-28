@@ -1,0 +1,23 @@
+<div id="list">
+<h1>Listing Page Groups</h1>
+<p>To reorder links on the home page, just click on the name of a group and drag the list around until its in the order you want it to be in.<br/>  <b>Remember:</b>  The first link in each group will be the default page for each group.</p>
+<p>To reorder the group list, click <%= link_to_remote 'here', :url=>reorder_super_simple_groups_path, :update=>'show_links', :method=>:get %></p>
+
+<%= link_to_remote('New Group', :url=>new_super_simple_group_path, :update=>'groups', :position=>:top, :method=>:get) %>
+<br/>
+<br/>
+<table id="group_list">
+	<thead>
+		<th>group name</th>
+		<th/>
+	</thead>
+	<% @groups.each do |group| %>
+	<tbody id="groups">
+		<%= render :partial => 'admin/groups/row', :locals=>{:group=>group} %>
+	</tbody>
+	<% end %>
+</table>
+</div>
+
+<div id="show_links">
+</div>

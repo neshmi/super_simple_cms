@@ -1,0 +1,18 @@
+<tr id="<%= group.identity %>">
+	<td>
+		<%= link_to_remote group.name, :url=>show_links_admin_groups_path(:id=>group.id), :update=>"show_links" %>	
+	</td>
+	<td>
+		<%=link_to_remote('edit',:update=>group.identity,
+								  	 :position=>:after,
+								  	 :complete=>update_page{|page| page.remove(group.identity)},
+								  	 :url=>edit_admin_group_path(group), 
+								  	 :method=>:get) %>
+							
+		<%=link_to_remote('-',:success=>update_page{|page| page.visual_effect(:fade, group.identity)},
+							  :url=>admin_group_path(group), 
+							  :method=>:delete,
+							  :confirm=>"Are you sure you want to delete this group?",
+							  :failure=>"alert('Could not remove this group')") %>
+	</td>
+</tr>

@@ -1,0 +1,8 @@
+<h3>PREVIEW<h3>
+<div id="body_preview">
+<%= @preview %>
+</div>
+<%= link_to_function "hide preview" do |page|
+	page[:preview].visual_effect :fade
+end
+%>

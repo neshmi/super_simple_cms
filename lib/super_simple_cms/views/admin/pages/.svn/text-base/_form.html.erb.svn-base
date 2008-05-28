@@ -1,0 +1,25 @@
+<p>
+  <b>Title</b><br />
+  The title will not be directly displayed in the page.  It is displayed in the window and tabs of the browser.<br/>
+  <%= f.text_field :title %>
+</p>
+
+<p>
+  <b>Perma link</b><br />
+The permalink is automatically generated from the title if you don't put anything in here.<br/>
+  <%= f.text_field :perma_link %>
+</p>
+
+<p>
+  <b>Body</b><br />
+  <%= textile_editor :page, :body, :rows=>10, :cols=>100 %><br/>
+  <%= link_to_remote 'preview', :url=>preview_admin_page_path("1"), :method=>:put, :with => "'body=' + $('page_body').value" %>
+</p>
+
+
+<p>
+  <b>Automatically generate link?</b>
+  <%= f.check_box :linkable %><br/>
+  <b>Select a grouping, if your page is linkable it will be displayed with that set of links</b>
+  <%= f.select :group_id, Group.find(:all).collect{|group| [ group.name, group.id ] } %>
+</p>	

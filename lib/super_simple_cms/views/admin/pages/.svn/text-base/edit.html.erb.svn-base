@@ -1,0 +1,20 @@
+<h2>Editing page <%= @page.title %></h2>
+
+<%= error_messages_for :page %>
+
+<% form_for :page, @page, :url=>admin_page_path(@page), :html=>{:method=>:put} do |f| %>
+ 	
+	<%= render :partial => 'form', :locals=>{:f=>f} %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+	<%= textile_editor_initialize -%>
+
+<% end %>
+
+<%= link_to 'Show', admin_page_path(@page) %> |
+<%= link_to 'Back', admin_pages_path %>
+
+<div id="preview">
+</div>

@@ -1,0 +1,13 @@
+<tr id="<%=id=Time.now.to_f.to_s.gsub('.', '')%>">
+	<%options={:url => admin_group_path(@group),
+		       	 :complete=>update_page{|page| page.remove(id)}, 
+			   		 :update=>id, 
+			   		 :position=>:after} %>	
+	<td colspan="6">
+		<% form_remote_tag(options.merge({:method=>:put}) ) do%>
+			Name <%= text_field :group, :name %>
+			<%= submit_tag "save" %>
+		<%= link_to_remote('cancel', options.merge({:method=>:get}))%>
+		<% end %>
+	</td>
+</tr>

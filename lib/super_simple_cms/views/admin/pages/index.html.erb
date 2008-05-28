@@ -1,0 +1,33 @@
+<div id="list">
+<h1>Listing Pages</h1>
+
+<table>
+  <tr>
+    <th>title</th>
+    <th>perma link</th>
+		<th>is a link</th>
+    <th>group</th>
+		<th>updated</th>
+		<th/>
+  </tr>
+
+<% for page in @pages %>
+  <tr>
+    <td><%=h page.title %></td>
+    <td><%=h page.perma_link %></td>
+    <td><%=h page.linkable %></td>
+    <td><%=h page.group.group_name if page.group %></td>
+		<td><%#=h page.updated_at.to_s(:setting) %></td>
+    <td>
+			<%= link_to 'Show', super_simple_page_path(page) %>
+    	<%= link_to 'Edit', edit_super_simple_page_path(page) %>
+    	<%= link_to 'Destroy', super_simple_page_path(page), :confirm => 'Are you sure?', :method => :delete %>
+		</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New page', new_super_simple_page_path %><br/><br/>
+</div>
