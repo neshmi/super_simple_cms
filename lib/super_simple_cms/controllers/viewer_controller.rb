@@ -2,7 +2,9 @@ class SuperSimpleCms::Controllers::ViewerController < ApplicationController
   
   def show_group
     group = SuperSimpleCms::Group.find_by_group_name(params[:page_group])
-    @page = SuperSimpleCms::Page.find(:first, :conditions=>['perma_link = ? AND group_id = ?', params[:perma_link], group.id]) if group
+    @page = SuperSimpleCms::Page.find(:first, 
+                                      :conditions=>['perma_link = ? AND group_id = ?', params[:perma_link], group.id],  
+                                      :order=>'position') if group
     if @page
       @title = @page.title
       set_links(group.id)

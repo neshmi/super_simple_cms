@@ -8,4 +8,4 @@ resources :super_simple_groups,
           :collection=>{:reorder=>:get, :show_links=>:get, :sort_group=>:post}
           
 view_page ':perma_link', :controller => 'super_simple_cms/controllers/viewer', :action => 'show'
-view_group ':page_group/:perma_link', :controller => 'super_simple_cms/controllers/viewer', :action => 'group_show'
+view_group ':page_group/:perma_link', :controller => 'super_simple_cms/controllers/viewer', :action => 'show_group'
