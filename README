@@ -1,5 +1,5 @@
 Super Simple CMS
-==============
+================
 
 The idea behind this CMS is that you just plug it in and its ready to go.  It isn't meant to be a full on CMS that you might use to power big end sites, but rather to deal with brochureware on sites that you are building a more extensive application for.  
 
@@ -11,20 +11,58 @@ https://github.com/neshmi/super_simple_cms/tree/master
 rubyforge:
 http://supersimplecms.rubyforge.org
 
-Example
-=======
+How to use it
+=============
 
 The basis of the plugin is really that you shouldn't need to do anything to your app to make it work other than a few lines here and there.  You need to generate the migration to create the table for the CMS:
 
 ruby script/generate super_simple_cms
 
-Once that is done, run your migrations and start up your server and browse to:
+After this, while it is not necessary, if you want the help of the textile editor helper then I recommend that you do:
+rake super_simple_cms::install to copy over all the assets (javascript, css, and images) necessary for the Textile Editor Helper to work.
 
+Finally, you need to setup your routes, just add the following to your config/routes.rb file and you should be set.
+
+
+You're now ready to run some Super Simple CMSing, point your browser to the following address and start making some pages!
 localhost:3000/admin/super_simple
 
-Add a couple pages, or groups and you should be set and ready to go!
+Add a couple pages, or groups and you should be set and ready to go!  You can click on a group to reorder the links or reorder the groups themselves.
 
 Enjoy the simplicity!
 
+A FEW TIPS
+==========
+
+You have some methods available to you that might help out.
+
+To have your links automatically generated just put the following in your menu area and it will generate links wrapped in <li>'s.
+<%= super_simple_cms_links %>
+
+note:
+This will first put all the pages out for the FIRST group (according to its position), and then add a link for every group that has at least one page in it.  In other words, by default, you must have at LEAST one group.  You won't be able to remove a group if it has any child pages, so if you want to get rid of a group, you need to first get rid of the pages.
+
+routes:
+The order of your routes matter.  If you map a root page above map.super_simple_cms then super simple won't automatically route your first page.  This is on purpose since I didn't always want to have to use the CMS's home page, but if you want to map a different root path, just make sure you put it above the CMS's routing.
+
+You also have access to the routes added by the CMS, for example, you can have:
+
+view_page_path('my-page') which would create a link to a page with the permalink of 'my-page'.
+
+To add a link to the admin side of the site just use:
+super_simple_cms_admin_path
+
+To see the rest of the routes added by Super Simple CMS just rake routes and enjoy!
+
+CREDITS
+=======
+
+Because this was extracted out of a currently in place system, this also means that I had already used other plugins to make my framework happen.  Rather than write my own, I decided to merge their functionality into my own plugin and I would like to give them thanks and recognize their own work in my application.
+
+Textile Editor Helper:
+Thanks to Dave Olsen and Chris Scharf, the original TEH plugin can be found at http://slateinfo.blogs.wvu.edu/plugins/textile_editor_helper.
+
+Plugin Configuration:
+I want to thank Matt McCray for his plugin configuration example which I extracted from Comatose.  Thanks for giving me a bit of direction in an area where I didn't know what else to do!
 
 Copyright (c) 2008 Matthew Vincent, released under the MIT license
