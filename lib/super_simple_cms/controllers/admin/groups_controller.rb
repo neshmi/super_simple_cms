@@ -86,12 +86,17 @@ class SuperSimpleCms::Controllers::Admin::GroupsController < SuperSimpleCms::Con
   # DELETE /groups/1.xml
   def destroy
     @group = SuperSimpleCms::Group.find(params[:id])
-    @group.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(super_simple_groups_url) }
-      format.js { head :ok }
-      format.xml  { head :ok }
+    respond_to do |format|    
+      if SuperSimpleCms::Group.find(:all).length > 1
+      @group.destroy 
+        format.html { redirect_to(super_simple_groups_url) }
+        format.js { head :ok }
+        format.xml  { head :ok }
+      else
+        format.html { redirect_to(super_simple_groups_url) }
+        format.js { head :failure }
+        format.xml  { head :failure }
+      end
     end
   end
   

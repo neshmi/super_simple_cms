@@ -40,7 +40,7 @@ To have your links automatically generated just put the following in your menu a
 <%= super_simple_cms_links %>
 
 note:
-This will first put all the pages out for the FIRST group (according to its position), and then add a link for every group that has at least one page in it.  In other words, by default, you must have at LEAST one group.  You won't be able to remove a group if it has any child pages, so if you want to get rid of a group, you need to first get rid of the pages.
+This will first put all the pages out for the FIRST group (according to its position), and then add a link for every group that has at least one page in it.  In other words, by default, you must have at LEAST one group.  If you delete a group that has child pages, all those pages will also be deleted.
 
 routes:
 The order of your routes matter.  If you map a root page above map.super_simple_cms then super simple won't automatically route your first page.  This is on purpose since I didn't always want to have to use the CMS's home page, but if you want to map a different root path, just make sure you put it above the CMS's routing.
