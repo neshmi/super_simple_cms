@@ -17,7 +17,7 @@
     <td><%=h page.perma_link %></td>
     <td><%=h page.linkable %></td>
     <td><%=h page.group.group_name if page.group %></td>
-		<td><%#=h page.updated_at.to_s(:setting) %></td>
+		<td><%=h page.updated_at.to_s(:setting) %></td>
     <td>
 			<%= link_to 'Show', super_simple_page_path(page) %>
     	<%= link_to 'Edit', edit_super_simple_page_path(page) %>

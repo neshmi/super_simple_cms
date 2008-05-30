@@ -12,7 +12,7 @@ The permalink is automatically generated from the title if you don't put anythin
 
 <p>
   <b>Body</b><br />
-  <%= textile_editor :page, :body, :rows=>10, :cols=>100 %><br/>
+  <%= textile_editor :page, :body %><br/>
   <%= link_to_remote 'preview', :url=>preview_super_simple_page_path(:page), :method=>:put, :with => "'body=' + $('page_body').value" %>
 </p>
 

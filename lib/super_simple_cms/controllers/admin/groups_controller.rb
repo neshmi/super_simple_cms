@@ -1,4 +1,5 @@
 class SuperSimpleCms::Controllers::Admin::GroupsController < SuperSimpleCms::Controllers::Admin::SuperSimpleController
+  unloadable
   # GET /groups
   # GET /groups.xml
   def index
@@ -98,7 +99,7 @@ class SuperSimpleCms::Controllers::Admin::GroupsController < SuperSimpleCms::Con
     @group = SuperSimpleCms::Group.find(params[:id])
     @group_links = @group.links
     
-    render :layout=>false
+    render :template=>'admin/groups/show_links', :layout=>false
   end
   
   def reorder
@@ -115,6 +116,15 @@ class SuperSimpleCms::Controllers::Admin::GroupsController < SuperSimpleCms::Con
     @groups.each do |group|
       group.position = params['groups_reorder'].index(group.id.to_s) + 1
       group.save
+    end
+    render :nothing => true
+  end
+  
+  def sort_links
+    @pages = SuperSimpleCms::Page.find(:all, :conditions=>['group_id = ?', params[:group_id]])
+    @pages.each do |page|
+      page.position = params['groups_reorder'].index(page.id.to_s) + 1
+      page.save
     end
     render :nothing => true
   end

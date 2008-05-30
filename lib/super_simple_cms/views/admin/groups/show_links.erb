@@ -1,5 +1,5 @@
-<h3>Showing links for <%= @group.name %></h3>
-<ul id="group-links"> 
+<h3>Showing links for <%= @group.group_name %></h3>
+<ul id="groups_reorder"> 
 <% @group.links.each do |link| %> 
 	<li id="link_<%= link.id %>"> 
 		<%= link.title %>  
@@ -7,4 +7,4 @@
 <% end %> 
 </ul> 
 
-<%= sortable_element 'group-links', :url => { :action => "sort", :id => @group }, :complete => visual_effect(:highlight, 'group-links') %> 
+<%= sortable_element 'groups_reorder', :url => sort_links_super_simple_groups_path(:group_id=>@group.id), :complete => visual_effect(:highlight, 'groups_reorder') %> 

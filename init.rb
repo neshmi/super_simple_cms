@@ -1,12 +1,17 @@
+require 'class_options'
 require 'super_simple_cms/routing'
 require 'averails'
 require 'super_simple_cms/super_simple'
 require 'active_record/acts/list'
+require 'super_simple_cms/configuration'
 require 'redcloth' unless defined?(RedCloth)
 ActionController::Routing::RouteSet::Mapper.send(:include, SuperSimpleCMS::Routing)
 
 ActiveRecord::Base.send :include, ActiveRecord::Acts::Tree
 ActiveRecord::Base.class_eval { include ActiveRecord::Acts::List }
+
+ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS[:setting] = '%b %d'
+# ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS[:arrow_billing]="%Y%m%d"
 
 ActionController::Base.send(:include, SuperSimpleCms::SuperSimple) 
 ActionController::Base.send(:include, SuperSimpleCMS::Controllers)

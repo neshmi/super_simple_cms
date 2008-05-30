@@ -12,7 +12,7 @@ module SuperSimpleCms
     private 
   
     def set_home_links
-      group = SuperSimpleCms::Group.find_by_group_name('Home')
+      group = SuperSimpleCms::Group.find(:first, :order=>'position')
       set_links(group.id)
     end
   
@@ -32,7 +32,7 @@ module SuperSimpleCms
         end
       else
         SuperSimpleCms::Group.find(:all, :order=>:position).each do |group|
-          @group_links << group.pages.first if group.pages.length > 0 && group.group_name != 'Home' && group.pages.first.linkable?
+          @group_links << group.pages.first if group.pages.length > 0 && group.group_name != SuperSimpleCms::Group.find(:first, :order=>'position').group_name && group.pages.first.linkable?
         end
       end
     end

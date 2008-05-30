@@ -1,6 +1,6 @@
 <tr id="<%= group.identity %>">
 	<td>
-		<%= link_to_remote group.group_name, :url=>show_links_super_simple_groups_path(:id=>group.id), :update=>"show_links" %>	
+		<%= link_to_remote group.group_name, :url=>show_links_super_simple_groups_path(:id=>group.id), :method=>:get, :update=>"show_links" %>	
 	</td>
 	<td>
 		<%=link_to_remote('edit',:update=>group.identity,

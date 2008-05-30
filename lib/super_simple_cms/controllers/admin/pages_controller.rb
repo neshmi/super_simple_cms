@@ -1,4 +1,5 @@
 class SuperSimpleCms::Controllers::Admin::PagesController < SuperSimpleCms::Controllers::Admin::SuperSimpleController
+  unloadable
   # GET /pages
   # GET /pages.xml
   def index
