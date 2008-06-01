@@ -9,6 +9,10 @@ class SuperSimpleCms::Page < ActiveRecord::Base
   validates_uniqueness_of :title, :scope=>:group_id
   validates_uniqueness_of :perma_link, :scope=>:group_id
   
+  def self.find_for_sitemap
+    find(:all, :select=>'id, updated_at', :order=>'updated_at DESC', :limit=>50000)
+  end
+  
   def before_save
     self.html = RedCloth.new(self.body).to_html if self.body
     if self.perma_link.nil? || self.perma_link.length < 1
