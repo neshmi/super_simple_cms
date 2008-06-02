@@ -1,5 +1,6 @@
 Super Simple CMS
 ================
+A Ruby on Rails CMS
 
 The idea behind this CMS is that you just plug it in and its ready to go.  It isn't meant to be a full on CMS that you might use to power big end sites, but rather to deal with brochureware on sites that you are building a more extensive application for.  
 
