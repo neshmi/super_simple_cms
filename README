@@ -6,7 +6,10 @@ The idea behind this CMS is that you just plug it in and its ready to go.  It is
 
 This plugin is on github and I'm encouraging everyone and anyone to please modify it, make it better than I can!
 
-git:
+repository:
+git://github.com/neshmi/super_simple_cms.git
+
+github:
 https://github.com/neshmi/super_simple_cms/tree/master
 
 wiki:
