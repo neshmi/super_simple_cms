@@ -13,6 +13,8 @@ class CreateSuperSimpleCms < ActiveRecord::Migration
       t.integer :position
       t.timestamps
     end
+    
+    SuperSimpleCms::Group.create(:group_name=>'Home')
   end
 
   def self.down
