@@ -10,7 +10,7 @@ class SuperSimpleCms::Page < ActiveRecord::Base
   validates_uniqueness_of :perma_link, :scope=>:group_id
   
   def self.find_for_sitemap
-    find(:all, :select=>'id, updated_at', :order=>'updated_at DESC', :limit=>50000)
+    find(:all, :select=>'id, updated_at, perma_link', :order=>'updated_at DESC', :limit=>50000)
   end
   
   def before_save
