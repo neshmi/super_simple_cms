@@ -15,6 +15,8 @@ class CreateSuperSimpleCms < ActiveRecord::Migration
     end
     
     SuperSimpleCms::Group.create(:group_name=>'Home')
+    
+    SuperSimpleCms::Page.create(:title=>'new page', :body=>"h1. new page!\n\np. this is your first page, change it by going to \"super simple cms admin\":/admin/super_simple", :linkable=>true, :group_id=>1, :position=>1)
   end
 
   def self.down
