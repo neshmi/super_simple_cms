@@ -1,16 +1,16 @@
 module SuperSimpleCMS::Helpers::NavigationHelper
   
-  def super_simple_cms_links
+  def super_simple_cms_links(css_class = nil)
     html = ""
     
     if @links && @links.length > 0
       if @links.first.group != SuperSimpleCms::Group.find(:first, :order=>'position')
         @links.each do |link|
-          html << "<li>#{link_to link.title, view_group_path(:page_group=>link.group.group_name, :perma_link=>link.perma_link)}</li>"
+          html << "<li #{css_class}>#{link_to link.title, view_group_path(:page_group=>link.group.group_name, :perma_link=>link.perma_link)}</li>"
         end
       else
         @links.each do |link|
-          html << "<li>#{link_to link.title, view_page_path(link.perma_link)}</li>"
+          html << "<li #{css_class}>#{link_to link.title, view_page_path(link.perma_link)}</li>"
         end
       end
     end
