@@ -24,6 +24,8 @@ module SuperSimpleCms
     end
     
     def set_group_links
+      params[:page_group] ? @current_group = SuperSimpleCms::Group.find_by_group_name(params[:page_group]) : @current_group = nil
+      
       @group_links = []
       
       if params[:page_group]
