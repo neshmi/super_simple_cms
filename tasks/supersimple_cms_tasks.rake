@@ -34,4 +34,10 @@ namespace :super_simple_cms do
       FileUtils.rm [path]
     end
   end
+  
+  desc "Updates group names to new naming convention"
+  task :update do
+    system("script/runner -e #{RAILS_ENV} SuperSimpleCms::Group.update")
+    puts "Group names updated"
+  end
 end

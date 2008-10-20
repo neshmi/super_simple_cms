@@ -8,5 +8,20 @@ class SuperSimpleCms::Group < ActiveRecord::Base
   def validate
     
   end
+
+  def spaced_name
+    self.group_name.gsub("_"," ")
+  end
+
+  def self.update
+    SuperSimpleCms::Group.all.each do |group|
+      group.group_name = group.group_name.gsub(" ","_")
+      group.save
+    end
+  end
+
+  def before_save
+    self.group_name.gsub!(" ","_")
+  end
   
 end

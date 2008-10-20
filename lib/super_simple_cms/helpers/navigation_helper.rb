@@ -17,7 +17,7 @@ module SuperSimpleCMS::Helpers::NavigationHelper
     
     if @group_links && !@group_links.empty?
       @group_links.each do |group_link|
-        html << "<li class='#{css_class}'>#{link_to group_link.group.group_name, view_group_path(:page_group=>group_link.group.group_name, :perma_link=>group_link.perma_link) if @links.first.group != group_link.group}</li>"
+        html << "<li class='#{css_class}'>#{link_to group_link.group.spaced_name, view_group_path(:page_group=>group_link.group.group_name, :perma_link=>group_link.perma_link) if @links.first.group != group_link.group}</li>"
       end
     end
 
@@ -30,7 +30,7 @@ module SuperSimpleCMS::Helpers::NavigationHelper
     html = ""
     if groups && !groups.empty?
       groups.each do |group|
-        html << "<li class='#{css_class}'>#{link_to group.group_name, view_group_path(:page_group=>group.group_name, :perma_link=>group.links.first.perma_link)}</li>" if group.links.length > 0
+        html << "<li class='#{css_class}'>#{link_to group.spaced_name, view_group_path(:page_group=>group.group_name, :perma_link=>group.links.first.perma_link)}</li>" if group.links.length > 0
       end
     end
     return html
