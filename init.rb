@@ -15,7 +15,6 @@ ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS[:setting] = '%b %
 ActionController::Base.send(:include, SuperSimpleCms::SuperSimple) 
 ActionController::Base.send(:include, SuperSimpleCMS::Controllers)
 ActionController::Base.send(:include, SuperSimpleCMS::Models)
-ActionController::Base.append_view_path(File.join(File.dirname(__FILE__), 'lib','super_simple_cms','views'))
-
+ActionController::Base.append_view_path([File.join(File.dirname(__FILE__), 'lib','super_simple_cms','views')])
 ActionView::Base.send(:include, SuperSimpleCMS::Helpers::NavigationHelper)
 ActionView::Base.send :include, TextileEditorHelper

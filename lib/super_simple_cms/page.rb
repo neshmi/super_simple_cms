@@ -2,7 +2,8 @@ class SuperSimpleCms::Page < ActiveRecord::Base
   
   set_table_name 'super_simple_pages'
 
-  belongs_to :group
+  belongs_to :group, :class_name => "SuperSimpleCms::Group"  
+  
   acts_as_list :scope => :group
   
   validates_presence_of :title, :body
