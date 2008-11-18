@@ -24,22 +24,29 @@ module SuperSimpleCMS::Helpers::NavigationHelper
     return html
   end
   
-  def super_simple_main_links(css_class = nil)
+  def super_simple_main_links(*opts)
+    optiions = opts.first
+    optiions[:element] ? element = "#{optiions[:element]}" : element = "li"
+    optiions[:class] ? css_class = "#{optiions[:class]}" : css_class = "" 
+    
     groups = SuperSimpleCms::Group.find(:all, :order=>'position')
     
     html = ""
     if groups && !groups.empty?
       groups.each do |group|
-        html << "<li class='#{css_class}'>#{link_to group.spaced_name, view_group_path(:page_group=>group.group_name, :perma_link=>group.links.first.perma_link)}</li>" if group.links.length > 0
+        html << "<#{element} class='#{css_class}'>#{link_to group.spaced_name, view_group_path(:page_group=>group.group_name, :perma_link=>group.links.first.perma_link)}</#{element}>" if group.links.length > 0
       end
     end
     return html
   end
   
-  def super_simple_sub_links(group,css_class = nil)
+  def super_simple_sub_links(group,*opts)
+    options = opts.first
+    optiions[:element] ? element = "#{optiions[:element]}" : element = "li"
+    optiions[:class] ? css_class = "#{optiions[:class]}" : css_class = ""
     html = ""
     group.links.each do |link|
-      html << "<li class='#{css_class}'>#{link_to link.title, view_group_path(:page_group=>group.group_name, :perma_link=>link.perma_link)}</li>"
+      html << "<#{element} class='#{css_class}'>#{link_to link.title, view_group_path(:page_group=>group.group_name, :perma_link=>link.perma_link)}</#{element}>"
     end
     return html
   end
