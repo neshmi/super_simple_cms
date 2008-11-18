@@ -44,6 +44,16 @@ You have some methods available to you that might help out.
 To have your links automatically generated just put the following in your menu area and it will generate links wrapped in <li>'s.
 <%= super_simple_cms_links %>
 
+You can also use a couple of fancy helpers:
+
+<%= super_simple_main_links %>
+<%= super_simple_sub_links %>
+
+It should be rather obvious that one will generate the main links, or the groups themselves the other will generate the pages from the currently selected group.  You can add a couple extras to both of those (:class=>"class_name", :element=>'div')
+
+:class -- this will specify the css class for the element
+:element -- this will let you decide what html element to wrap it in, if none is specified it will default to li
+
 note:
 This will first put all the pages out for the FIRST group (according to its position), and then add a link for every group that has at least one page in it.  In other words, by default, you must have at LEAST one group.  If you delete a group that has child pages, all those pages will also be deleted.
 
