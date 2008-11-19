@@ -42,8 +42,8 @@ module SuperSimpleCMS::Helpers::NavigationHelper
   
   def super_simple_sub_links(group,*opts)
     options = opts.first
-    optiions[:element] ? element = "#{optiions[:element]}" : element = "li"
-    optiions[:class] ? css_class = "#{optiions[:class]}" : css_class = ""
+    options[:element] ? element = "#{options[:element]}" : element = "li"
+    options[:class] ? css_class = "#{options[:class]}" : css_class = ""
     html = ""
     group.links.each do |link|
       html << "<#{element} class='#{css_class}'>#{link_to link.title, view_group_path(:page_group=>group.group_name, :perma_link=>link.perma_link)}</#{element}>"
