@@ -45,9 +45,7 @@ module SuperSimpleCMS::Helpers::NavigationHelper
     options[:element] ? element = "#{options[:element]}" : element = "li"
     options[:class] ? css_class = "#{options[:class]}" : css_class = ""
     html = ""
-    group.links.each do |link|
-      html << "<#{element} class='#{css_class}'>#{link_to link.title, view_group_path(:page_group=>group.group_name, :perma_link=>link.perma_link)}</#{element}>"
-    end
+    group.links.each{|link| html << "<#{element} class='#{css_class}'>#{link_to link.title, view_group_path(:page_group=>group.group_name, :perma_link=>link.perma_link)}</#{element}>"} if group.links.length > 1
     return html
   end
   
