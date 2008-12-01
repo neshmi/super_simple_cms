@@ -25,9 +25,9 @@ module SuperSimpleCMS::Helpers::NavigationHelper
   end
   
   def super_simple_main_links(*opts)
-    optiions = opts.first
-    optiions[:element] ? element = "#{optiions[:element]}" : element = "li"
-    optiions[:class] ? css_class = "#{optiions[:class]}" : css_class = "" 
+    options = opts.first
+    options[:element] ? element = "#{options[:element]}" : element = "li"
+    options[:class] ? css_class = "#{options[:class]}" : css_class = "" 
     
     groups = SuperSimpleCms::Group.find(:all, :order=>'position')
     
