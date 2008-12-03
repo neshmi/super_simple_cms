@@ -12,13 +12,13 @@ module SuperSimpleCms
 
   class Configuration
 
-    attr_accessor_with_default :admin_title,          'Comatose'
+    attr_accessor_with_default :admin_title,          'Super Simple CMS'
+    attr_accessor_with_default :admin_layout,         ''
     attr_accessor_with_default :admin_includes,       []
     attr_accessor_with_default :admin_helpers,        []
     attr_accessor_with_default :admin_sub_title,      'The Micro CMS'
     attr_accessor_with_default :content_type,         'utf-8'
     attr_accessor_with_default :default_filter,       'Textile'
-    attr_accessor_with_default :default_processor,    :liquid
     attr_accessor_with_default :default_tree_level,   2
     attr_accessor_with_default :disable_caching,      false
     attr_accessor_with_default :hidden_meta_fields,   []
