@@ -14,14 +14,14 @@ class SuperSimpleCms::Group < ActiveRecord::Base
   end
 
   def self.update
-    SuperSimpleCms::Group.all.each do |group|
-      group.group_name = group.group_name.gsub(" ","_")
+    SuperSimpleCms::Group.all.each do |group|    
+      group.group_name = group.group_name.downcase.gsub(" ","_")      
       group.save
     end
   end
 
   def before_save
-    self.group_name.gsub!(" ","_")
+    self.group_name = self.group_name.downcase.gsub(" ","_")      
   end
   
 end

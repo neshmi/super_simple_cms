@@ -28,13 +28,15 @@ module SuperSimpleCMS::Helpers::NavigationHelper
     options = opts.first
     options[:element] ? element = "#{options[:element]}" : element = "li"
     options[:class] ? css_class = "#{options[:class]}" : css_class = "" 
+    options[:selected] ? selected = "#{options[:selected]}" : selected = ""
     
     groups = SuperSimpleCms::Group.find(:all, :order=>'position')
     
     html = ""
     if groups && !groups.empty?
       groups.each do |group|
-        html << "<#{element} class='#{css_class}'>#{link_to group.spaced_name, view_group_path(:page_group=>group.group_name, :perma_link=>group.links.first.perma_link)}</#{element}>" if group.links.length > 0
+        params[:page_group] == group.group_name ? selected_class = selected : selected_class = ""
+        html << "<#{element} class='#{css_class} #{selected_class}'>#{link_to group.spaced_name, view_group_path(:page_group=>group.group_name, :perma_link=>group.links.first.perma_link)}</#{element}>" if group.links.length > 0
       end
     end
     return html
@@ -44,8 +46,14 @@ module SuperSimpleCMS::Helpers::NavigationHelper
     options = opts.first
     options[:element] ? element = "#{options[:element]}" : element = "li"
     options[:class] ? css_class = "#{options[:class]}" : css_class = ""
+    options[:selected] ? selected = "#{options[:selected]}" : selected = ""
     html = ""
-    group.links.each{|link| html << "<#{element} class='#{css_class}'>#{link_to link.title, view_group_path(:page_group=>group.group_name, :perma_link=>link.perma_link)}</#{element}>"} if group.links.length > 1
+    if group.links.length > 1
+      group.links.each do |link| 
+        params[:perma_link] == link.perma_link ? selected_class = selected : selected_class = ""
+        html << "<#{element} class='#{css_class} #{selected_class}'>#{link_to link.title, view_group_path(:page_group=>group.group_name, :perma_link=>link.perma_link)}</#{element}>" 
+      end
+    end
     return html
   end
   
