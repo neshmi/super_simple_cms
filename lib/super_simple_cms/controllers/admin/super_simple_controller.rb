@@ -1,7 +1,9 @@
 class SuperSimpleCms::Controllers::Admin::SuperSimpleController < ApplicationController
   unloadable
+  
   before_filter :handle_authorization  
-  before_filter :handle_layout
+  layout SuperSimpleCms.config.admin_layout unless SuperSimpleCms.config.admin_layout.empty?
+  
   def index
     render :template => 'admin/super_simple/index'
   end
@@ -18,10 +20,6 @@ class SuperSimpleCms::Controllers::Admin::SuperSimpleController < ApplicationCon
     else
       true
     end
-  end
-  
-  def handle_layout
-    debugger
   end
   
   SuperSimpleCms.config.admin_includes.each do |mod|
