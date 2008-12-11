@@ -1,9 +1,9 @@
 class SuperSimpleCms::Controllers::ViewerController < ApplicationController
   unloadable
   def index
-    group = SuperSimpleCms::Group.find(:first, :order=>'position')
+    @current_group = SuperSimpleCms::Group.find(:first, :order=>'position')
     # set_links(group.id)
-    @page = SuperSimpleCms::Page.find(:first, :conditions=>['group_id = ? AND position = ?', group.id, 1])
+    @page = SuperSimpleCms::Page.find(:first, :conditions=>['group_id = ? AND position = ?', @current_group.id, 1])
     if @page
       @title = @page.title
       render :template => 'viewer/show'
