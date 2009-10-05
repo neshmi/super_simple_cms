@@ -57,4 +57,44 @@ module SuperSimpleCMS::Helpers::NavigationHelper
     return html
   end
   
+  def super_simple_nested_links(*opts)
+    ul_id = "menu_ul"
+    ul_class = "ul_class"
+    sub_li = "sub_li"
+    sub_menu_class = "sub_menu"
+    unless opts.empty?
+      options = opts.first
+      ul_id = options[:ul_id] if options[:ul_id]
+      ul_class = options[:ul_class] if options[:ul_class]
+      sub_menu_class = options[:sub_menu_class] if options[:sub_menu_class]
+    end 
+    html = ""    
+    groups = SuperSimpleCms::Group.find(:all, :order=>'position')
+    html << "<ul id ='#{ul_id}' class='#{ul_class}'>"
+    
+    if groups && !groups.empty?    
+      groups.each do |group|
+        if !group.links.empty? && group.links.length > 1
+          html << "<li class=#{sub_li}>"        
+          html << "#{link_to group.spaced_name, view_group_path(:page_group=>group.group_name, :perma_link=>group.links.first.perma_link), :class=>sub_menu_class}"
+          html << "<ul>"        
+          group.links.each do |link|
+            html << "<li>#{link_to link.title, view_group_path(:page_group=>group.group_name, :perma_link=>link.perma_link)}</li>"
+          end
+          html << "</ul>"
+          html << "</li>"        
+        elsif !group.links.empty?
+          html << "<li>"        
+          html << "#{link_to group.spaced_name, view_group_path(:page_group=>group.group_name, :perma_link=>group.links.first.perma_link)}"
+          html << "</li>"
+        else
+          html << ""
+        end
+      end
+    end    
+    
+    html << "</ul>"
+    
+  end
+  
 end
