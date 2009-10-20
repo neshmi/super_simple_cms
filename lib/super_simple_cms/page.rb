@@ -17,9 +17,9 @@ class SuperSimpleCms::Page < ActiveRecord::Base
   def before_save
     self.html = RedCloth.new(self.body).to_html if self.body
     if self.perma_link.nil? || self.perma_link.length < 1
-      self.perma_link = self.title.gsub(" ","-") 
+      self.perma_link = self.title.gsub(/[^[:alnum:]]/,'-').gsub(/-{2,}/,'-') 
     end
-    self.perma_link.gsub!(" ","-")
+    self.perma_link = self.perma_link.gsub(/[^[:alnum:]]/,'-').gsub(/-{2,}/,'-')
     self.perma_link.downcase!
   end
   
